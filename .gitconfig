@@ -1,0 +1,20 @@
+[include]
+        path = ~/.gitconfig.local
+
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+
+[core]
+        excludesfile = ~/.gitignore.global
+        editor = nano
+        filemode = false
+        anw = !git diff -U0 -w --no-color -- \"$@\" | git apply --cached --ignore-whitespace --unidiff-zero "#"
+        whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
+        autocrlf = input
+        whitespace = cr-at-eol
+
+[push]
+        default = simple
