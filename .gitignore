@@ -5,4 +5,5 @@
 !.gitignore
 
 # ...even if they are in subdirectories
-!*/
+!*/.gitkeep
+
