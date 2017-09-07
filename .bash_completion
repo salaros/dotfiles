@@ -1,0 +1,4 @@
+# Include Azure CLI autocompletion
+if [ -f /opt/azure-cli/az.completion ]; then
+  . /opt/azure-cli/az.completion
+fi
