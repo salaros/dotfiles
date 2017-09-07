@@ -8,7 +8,7 @@
         ui = true
 
 [core]
-        excludesfile = ~/.gitignore.global
+        excludesfile = ~/.gitignore
         editor = nano
         filemode = false
         anw = !git diff -U0 -w --no-color -- \"$@\" | git apply --cached --ignore-whitespace --unidiff-zero "#"

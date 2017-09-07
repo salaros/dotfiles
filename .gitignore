@@ -1,16 +1,9 @@
-# Ignore everything
-*
-
-# But not these files and folders...
-!.gitignore
-
-# ...even if they are in subdirectories
-!*/.gitkeep
-
 # Ignore all files named .DS_Store or ending with .log
-**/.DS_Store
-**/Thumbs.db
-**/desktop.ini
-**/*.bak
-**/_bak
-**.log
+.DS_Store
+*~
+*.swp
+Thumbs.db
+desktop.ini
+*.bak
+*_bak
+*.log
