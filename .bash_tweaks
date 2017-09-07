@@ -1,0 +1,41 @@
+# If set, Bash attempts to save all lines of a multiple-line command in 
+# the same history entry. This allows easy re-editing of multi-line commands. 
+shopt -s cmdhist
+
+# Don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+export HISTCONTROL='ignoreboth'
+
+# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTFILESIZE=500000
+export HISTSIZE=100000
+
+# Filter out these commands from bash history
+export HISTIGNORE='&:cd:ls:bin/ss;history *'
+
+# If set, and Readline is being used, Bash will not attempt to search
+# the `PATH' for possible completions when completion is attempted 
+# on an empty line.
+shopt -s no_empty_cmd_completion
+
+# Check for typos
+shopt -s cdspell
+shopt -s dirspell
+
+# Append to the history file, don't overwrite it
+shopt -s histappend histreedit histverify
+
+# Check the window size after each command and, if necessary,
+# Update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# Make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# Don't warn of incoming mail
+shopt -u mailwarn
+unset MAILCHECK;
