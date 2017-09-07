@@ -27,7 +27,7 @@ fi
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
 # Coloring the bash here
-[[ -f ~/.bash_colors ]] && . ~/.bash_colors
+[[ -f ~/.bash_colors ]] && . ~/.bash_prompt
 
 # Set host-specific config
 [[ -f ~/.bashrc.$HOSTNAME ]] && . ~/.bashrc.$HOSTNAME
