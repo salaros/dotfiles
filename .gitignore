@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not these files and folders...
+!.gitignore
+
+# ...even if they are in subdirectories
+!*/
