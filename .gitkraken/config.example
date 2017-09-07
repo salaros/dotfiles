@@ -1,0 +1,12 @@
+{
+  "newUserSetup": {
+    "askedAboutBugReporting": true,
+    "askedAboutAnalytics": true
+  },
+  "optIntoBugReporting": false,
+  "optIntoAnalytics": false,
+  "ui": {
+    "showToolbarLabels": false,
+    "wideLayout": true
+  }
+}
