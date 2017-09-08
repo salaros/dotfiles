@@ -9,7 +9,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ll='ls -alF --color=auto'
     alias la='ls -A --color=auto'
     alias l='ls -CF --color=auto'
-    alias ld='ls -ld */ --color=auto' # Only directories
+    alias ld='ls -ld * --color=auto' # Only directories
 
     alias ls='ls -lahF --color=auto'
     alias lsd='ls -dAFh --color=auto .[^.]*'
