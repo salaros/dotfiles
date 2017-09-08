@@ -1,5 +1,4 @@
 export CLICOLOR=1
-export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # Tell grep to highlight matches
 export GREP_OPTIONS='—color=auto'
@@ -60,3 +59,6 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
     export PS1="${debian_chroot:+($debian_chroot)}${PS1}"
 fi
+
+# Fancy ls colors via: github.com/trapd00r/LS_COLORS
+eval "$(dircolors -b ~/.dircolors)"
