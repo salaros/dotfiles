@@ -2,6 +2,9 @@
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
 # If set, Bash attempts to save all lines of a multiple-line command in 
 # the same history entry. This allows easy re-editing of multi-line commands. 
 shopt -s cmdhist
