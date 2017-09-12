@@ -58,4 +58,4 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # Fancy ls colors via: github.com/trapd00r/LS_COLORS
-eval "$(dircolors -b ~/.dircolors)"
+[[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)"
