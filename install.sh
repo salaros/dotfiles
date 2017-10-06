@@ -38,7 +38,7 @@ done;
 printf "${red}Done!${nocolor}\n\n"
 
 # Install Bash-related files via symlinks
-echo "${purple}Installing new Bash configs${nocolor}"
+echo "${purple}Installing new Bash-related configs${nocolor}"
 for file in $(pwd)/{aliases,dircolors,inputrc,bash_completion,bashrc,bash_prompt,bash_tweaks,profile}; do
 	ln -sv "$file" "$HOME/.$(basename $file)"
 done;
