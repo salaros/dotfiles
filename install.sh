@@ -22,8 +22,7 @@ if [ ! -d ~/.var/backup ]; then
 fi
 
 # Backuping existing and ${pink}REAL${red} dotfiles and removing symlinked dotfiles
-echo "${red}Backuping existing and ${pink}REAL${red} dotfiles"
-echo "(and removing symlinked dotfiles)${nocolor}"
+printf "${red}Backuping existing and ${pink}REAL${red} dotfiles (and removing symlinked dotfiles)\n\n"
 shopt -u dotglob
 for file in *; do
     dotfile="$HOME/.$(basename $file)"
@@ -35,28 +34,28 @@ for file in *; do
         mv -v $dotfile ~/.var/backup/dotfiles
     fi
 done;
-printf "${red}Done!${nocolor}\n\n"
+printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install Bash-related files via symlinks
-echo "${purple}Installing new Bash-related configs${nocolor}"
+printf "${purple}Bash-related configs\n\n"
 for file in $(pwd)/{aliases,dircolors,inputrc,bash_completion,bashrc,bash_prompt,bash_tweaks,profile}; do
 	ln -sv "$file" "$HOME/.$(basename $file)"
 done;
-printf "${purple}Done!${nocolor}\n\n"
+printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install Git and editor-related files via symlinks
-echo "${blue}Installing new Git and editor-related configs${nocolor}"
+printf "${blue}Git and editor-related configs\n\n"
 for file in $(pwd)/{editorconfig,gitignore,gitattributes,gitconfig}; do
 	ln -sv "$file" "$HOME/.$(basename $file)"
 done;
-printf "${blue}Done!${nocolor}\n\n"
+printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install wget and cURL-related files via symlinks
-echo "${fawn}Installing new wget and cURL-related configs${nocolor}"
+printf "${darkblue}wget and cURL-related configs\n\n"
 for file in $(pwd)/{curlrc,wgetrc}; do
 	ln -sv "$file" "$HOME/.$(basename $file)"
 done;
-printf "${fawn}Done!${nocolor}\n\n"
+printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Reloading the bash with new settings
 source ~/.bashrc && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
