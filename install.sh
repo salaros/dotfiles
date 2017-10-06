@@ -40,4 +40,5 @@ for file in $(pwd)/{aliases,dircolors,bash_completion,bashrc,bash_prompt,bash_tw
 done;
 printf "${purple}Done!${nocolor}\n\n"
 
-source ~/.bashrc && exec bash
+# Reloading the bash with new settings
+source ~/.bashrc && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
