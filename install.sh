@@ -51,5 +51,12 @@ for file in $(pwd)/{editorconfig,gitignore,gitattributes,gitconfig}; do
 done;
 printf "${blue}Done!${nocolor}\n\n"
 
+# Install wget and cURL-related files via symlinks
+echo "${fawn}Installing new wget and cURL-related configs${nocolor}"
+for file in $(pwd)/{curlrc,wgetrc}; do
+	ln -sv "$file" "$HOME/.$(basename $file)"
+done;
+printf "${fawn}Done!${nocolor}\n\n"
+
 # Reloading the bash with new settings
 source ~/.bashrc && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
