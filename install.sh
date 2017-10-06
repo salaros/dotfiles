@@ -44,5 +44,12 @@ for file in $(pwd)/{aliases,dircolors,inputrc,bash_completion,bashrc,bash_prompt
 done;
 printf "${purple}Done!${nocolor}\n\n"
 
+# Install Git and editor-related files via symlinks
+echo "${blue}Installing new Git and editor-related configs${nocolor}"
+for file in $(pwd)/{editorconfig,gitignore,gitattributes,gitconfig}; do
+	ln -sv "$file" "$HOME/.$(basename $file)"
+done;
+printf "${blue}Done!${nocolor}\n\n"
+
 # Reloading the bash with new settings
 source ~/.bashrc && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
