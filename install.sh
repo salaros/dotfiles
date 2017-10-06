@@ -21,11 +21,12 @@ if [ ! -d ~/.var/backup ]; then
 	mkdir -pv ~/.var/backup/dotfiles
 fi
 
-#
 echo "${red}Backuping existent Bash configs (removing symlinks)${nocolor}"
 for file in ~/.{aliases,dircolors,bash_completion,bashrc,bash_prompt,bash_tweaks,profile}; do
+    # If file exists and it's a symlink it will be REMOVED
     if [ -f $file ] && [ -L $file ]; then
         rm -fv $file
+    # Otherwise (if it's a real file) it will be moved to backups
     elif [ -f $file ]; then
         mv -v $file ~/.var/backup/dotfiles
     fi
