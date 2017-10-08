@@ -73,7 +73,7 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 # Install devilspie and other tweaks via symlinks
 printf "${green}Devilspie and other tweaks\n\n"
 [[ ! -L "$HOME/.devilspie" ]] && ln -sv $(pwd)/devilspie "$HOME/.devilspie"
-devilspie &
+(killall -q devilspie; devilspie -d)&
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Reloading the bash with new settings
