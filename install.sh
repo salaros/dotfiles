@@ -34,6 +34,19 @@ for file in *; do
         mv -v $dotfile ~/.var/backup/dotfiles
     fi
 done;
+
+for folder in `find . -type d -maxdepth 1`
+do
+	dotfolder="$HOME/.$(basename $folder)"
+	if [ -d $dotfolder ] && [ -L $dotfolder ]; then
+        rm -fv $dotfolder
+    # Otherwise (if it's a real file) it will be moved to backups
+    elif [ -d $dotfile ]; then
+        cp -rfvaup $dotfile ~/.var/backup/dotfiles && rm -rfv $dotfile
+    fi
+
+done
+
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install Bash-related files via symlinks
