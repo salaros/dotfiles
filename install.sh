@@ -73,7 +73,13 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 # Install devilspie and other tweaks via symlinks
 printf "${green}Devilspie and other tweaks\n\n"
 [[ ! -L "$HOME/.devilspie" ]] && ln -sv $(pwd)/devilspie "$HOME/.devilspie"
-(killall -q devilspie; devilspie -d)&
+(killall -q devilspie; command -v devilspie >/dev/null 2>&1 && devilspie -d)&
+command -v devilspie >/dev/null 2>&1 && echo "[Desktop Entry]
+Name=Devilspie
+Exec=/usr/bin/devilspie
+Terminal=false
+Type=Application
+X-Gnome-Autostart=true" > $HOME/.config/autostart/devilspie.desktop
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Reloading the bash with new settings
