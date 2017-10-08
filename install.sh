@@ -70,5 +70,11 @@ for file in $(pwd)/{curlrc,wgetrc}; do
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
+# Install devilspie and other tweaks via symlinks
+printf "${green}Devilspie and other tweaks\n\n"
+[[ ! -L "$HOME/.devilspie" ]] && ln -sv $(pwd)/devilspie "$HOME/.devilspie"
+devilspie &
+printf "${white}[\u2713] Done!\n\n${nocolor}"
+
 # Reloading the bash with new settings
 source ~/.bashrc && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
