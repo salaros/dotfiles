@@ -17,6 +17,9 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# Exports environment variables
+[[ -f ~/.exports ]] && . ~/.exports
+
 # Set some bash options and apply some tweaks
 [[ -f ~/.bash_tweaks ]] && . ~/.bash_tweaks
 

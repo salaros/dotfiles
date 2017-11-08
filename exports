@@ -1,0 +1,17 @@
+# Prefer US English and use UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+export HISTCONTROL='ignoreboth'
+
+# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTFILESIZE=500000
+export HISTSIZE=100000
+
+# Filter out these commands from bash history
+export HISTIGNORE='&:cd:ls:bin/ss;history *'
