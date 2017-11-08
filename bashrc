@@ -31,3 +31,7 @@ fi
 
 # Set host-specific config
 [[ -f ~/.bashrc.$HOSTNAME ]] && . ~/.bashrc.$HOSTNAME
+
+# Starts SSH agent and all available loads identities
+# as a workaround for Bash running on WSL (Windows Subsystem for Linux)
+eval `ssh-agent` > /dev/null 2>&1 && ssh-add > /dev/null 2>&1
