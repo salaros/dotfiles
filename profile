@@ -33,3 +33,6 @@ fi
 if [ -d "$HOME/.composer/vendor/bin" ] ; then
     PATH="$HOME/.composer/vendor/bin:$PATH"
 fi
+
+# Prepend Yarn's bin folder to PATH if needed
+[[ -d "$HOME/.yarn/bin" ]] && PATH="$HOME/.yarn/bin:$PATH"
