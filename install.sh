@@ -73,6 +73,11 @@ for file in $(pwd)/{curlrc,wgetrc}; do
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
+# Install .bin folder, containing some useful executables
+printf "${cyan}~/.bin folder for executables\n"
+[[ ! -L "$HOME/.bin" ]] && ln -sv $(pwd)/bin "$HOME/.bin"
+printf "${white}[\u2713] Done!\n\n${nocolor}"
+
 # Install devilspie and other tweaks via symlinks
 printf "${green}Devilspie and other tweaks\n"
 [[ ! -L "$HOME/.devilspie" ]] && ln -sv $(pwd)/devilspie "$HOME/.devilspie"
