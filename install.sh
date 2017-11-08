@@ -90,5 +90,8 @@ Type=Application
 X-Gnome-Autostart=true" > $HOME/.config/autostart/devilspie.desktop
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
+# Unset variables set by this script
+unset -v file folder dotfile dotfolder
+
 # Reloading the bash with new settings
 source ~/.bashrc && source ~/.profile && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
