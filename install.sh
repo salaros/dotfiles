@@ -38,7 +38,7 @@ for file in *; do
     fi
 done;
 
-for folder in `find . -type d -maxdepth 1`
+for folder in `find . -maxdepth 1 -type d`
 do
 	dotfolder="$HOME/.$(basename $folder)"
 	if [ -d $dotfolder ] && [ -L $dotfolder ]; then
