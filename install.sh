@@ -74,7 +74,7 @@ done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install devilspie and other tweaks via symlinks
-printf "${green}Devilspie and other tweaks\n\n"
+printf "${green}Devilspie and other tweaks\n"
 [[ ! -L "$HOME/.devilspie" ]] && ln -sv $(pwd)/devilspie "$HOME/.devilspie"
 (killall -q devilspie; command -v devilspie >/dev/null 2>&1 && devilspie -d)&
 command -v devilspie >/dev/null 2>&1 && echo "[Desktop Entry]
