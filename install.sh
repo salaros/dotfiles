@@ -32,6 +32,9 @@ for file in *; do
     # Otherwise (if it's a real file) it will be moved to backups
     elif [ -f $dotfile ]; then
         mv -v $dotfile ~/.var/backup/dotfiles
+    # Treating a special case below: a symlink pointing to inexistent file
+    elif [ ! -d $dotfile ]; then
+        rm -fv $dotfile
     fi
 done;
 
