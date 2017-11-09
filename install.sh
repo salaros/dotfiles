@@ -68,7 +68,7 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install development and editor-related files via symlinks
 printf "${yellow}Development and editor-related configs\n\n"
-for file in $(pwd)/{editorconfig}; do
+for file in $(pwd)/{editorconfig,npmrc,yarnrc}; do
 	ln -sv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"

@@ -15,3 +15,6 @@ export HISTSIZE=100000
 
 # Filter out these commands from bash history
 export HISTIGNORE='&:cd:ls:bin/ss;history *'
+
+# Force NPM prefix to ~/.npm folder
+export NPM_CONFIG_PREFIX=${HOME}/.npm
