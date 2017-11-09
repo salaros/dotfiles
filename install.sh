@@ -59,9 +59,16 @@ for file in $(pwd)/{aliases,exports,dircolors,inputrc,bash_completion,bashrc,bas
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
-# Install Git and editor-related files via symlinks
-printf "${blue}Git and editor-related configs\n\n"
-for file in $(pwd)/{editorconfig,gitignore,gitattributes,gitconfig}; do
+# Install Git-related files via symlinks
+printf "${blue}Git-related configs\n\n"
+for file in $(pwd)/{gitignore,gitattributes,gitconfig}; do
+	ln -sv "$file" "$HOME/.$(basename $file)"
+done;
+printf "${white}[\u2713] Done!\n\n${nocolor}"
+
+# Install development and editor-related files via symlinks
+printf "${yellow}Development and editor-related configs\n\n"
+for file in $(pwd)/{editorconfig}; do
 	ln -sv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
