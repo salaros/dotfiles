@@ -37,4 +37,9 @@ fi
 
 # Starts SSH agent and all available loads identities
 # as a workaround for Bash running on WSL (Windows Subsystem for Linux)
-eval `ssh-agent` > /dev/null 2>&1 && ssh-add > /dev/null 2>&1
+if grep -q Microsoft /proc/version; then
+    chmod 600 -v ~/.ssh/id_*
+    chmod 600 -v ~/.ssh/*.ppk
+    chmod 755 -v ~/.ssh/
+    eval `ssh-agent` > /dev/null 2>&1 && ssh-add > /dev/null 2>&1;
+fi
