@@ -28,7 +28,7 @@ for file in *; do
     dotfile="$HOME/.$(basename $file)"
     # If file exists and it's a symlink it will be REMOVED
     if [ -f $dotfile ] && [ -L $dotfile ]; then
-        rm -fv $dotfile
+        printf "";
     # Otherwise (if it's a real file) it will be moved to backups
     elif [ -f $dotfile ]; then
         mv -v $dotfile ~/.var/backup/dotfiles
@@ -40,12 +40,9 @@ done;
 
 for folder in `find . -maxdepth 1 -type d`
 do
-	dotfolder="$HOME/.$(basename $folder)"
-	if [ -d $dotfolder ] && [ -L $dotfolder ]; then
-        rm -fv $dotfolder
-    # Otherwise (if it's a real file) it will be moved to backups
-    elif [ -d $dotfile ]; then
-        cp -rfvaup $dotfile ~/.var/backup/dotfiles && rm -rfv $dotfile
+    dotfolder="$HOME/.$(basename $folder)"
+    if [ -d $dotfolder ] && [ ! -L $dotfolder ]; then
+        cp -rfvaup $dotfolder ~/.var/backup/dotfolder && rm -rfv $dotfolder
     fi
 
 done
@@ -55,46 +52,55 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 # Install Bash-related files via symlinks
 printf "${purple}Bash-related configs\n\n"
 for file in $(pwd)/{aliases,exports,dircolors,bash_completion,bashrc,bash_prompt,bash_tweaks,profile}; do
-	ln -sv "$file" "$HOME/.$(basename $file)"
+	ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install screen, input and session-related stuff
 printf "${fawn}Screen, input and session-related stuff\n\n"
 for file in $(pwd)/{drirc,inputrc,screenrc,xbindkeysrc,xinputrc,xsession}; do
-	ln -sv "$file" "$HOME/.$(basename $file)"
+	ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install Git-related files via symlinks
 printf "${blue}Git-related configs\n\n"
 for file in $(pwd)/{gitignore,gitattributes,gitconfig}; do
-	ln -sv "$file" "$HOME/.$(basename $file)"
+	ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install development and editor-related files via symlinks
 printf "${yellow}Development and editor-related configs\n\n"
 for file in $(pwd)/{editorconfig,npmrc,yarnrc}; do
-	ln -sv "$file" "$HOME/.$(basename $file)"
+	ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install wget and cURL-related files via symlinks
 printf "${darkblue}wget and cURL-related configs\n\n"
 for file in $(pwd)/{curlrc,wgetrc}; do
-	ln -sv "$file" "$HOME/.$(basename $file)"
+	ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install .bin folder, containing some useful executables
 printf "${cyan}~/.bin folder for executables\n"
-[[ ! -L "$HOME/.bin" ]] && ln -sv $(pwd)/bin "$HOME/.bin"
+[[ ! -L "$HOME/.bin" ]] && ln -sfv $(pwd)/bin "$HOME/.bin"
+printf "${white}[\u2713] Done!\n\n${nocolor}"
+
+# Install .config folder for app configs
+printf "${darkcyan}~/.config folder for app configs\n"
+for folder in `find $(pwd)/config/* -maxdepth 1 -type d`
+do
+	dotfolder="$HOME/.config/$(basename $folder)"
+    ln -sfv $folder $dotfolder
+done
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install devilspie and other tweaks via symlinks
 printf "${green}Devilspie and other tweaks\n"
-[[ ! -L "$HOME/.devilspie" ]] && ln -sv $(pwd)/devilspie "$HOME/.devilspie"
+[[ ! -L "$HOME/.devilspie" ]] && ln -sfv $(pwd)/devilspie "$HOME/.devilspie"
 (killall -q devilspie; command -v devilspie >/dev/null 2>&1 && devilspie -d && killall -q devilspie)&
 if [ ! -f "$HOME/.config/autostart/devilspie.desktop" ]; then
     command -v devilspie >/dev/null 2>&1 && echo "[Desktop Entry]
