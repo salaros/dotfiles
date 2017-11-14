@@ -95,14 +95,16 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 # Install devilspie and other tweaks via symlinks
 printf "${green}Devilspie and other tweaks\n"
 [[ ! -L "$HOME/.devilspie" ]] && ln -sv $(pwd)/devilspie "$HOME/.devilspie"
-(killall -q devilspie; command -v devilspie >/dev/null 2>&1 && devilspie -d)&
-command -v devilspie >/dev/null 2>&1 && echo "[Desktop Entry]
-Name=Devilspie
-Exec=/usr/bin/devilspie
-Terminal=false
-Type=Application
-X-Gnome-Autostart=true" > $HOME/.config/autostart/devilspie.desktop
-printf "${white}[\u2713] Done!\n\n${nocolor}"
+(killall -q devilspie; command -v devilspie >/dev/null 2>&1 && devilspie -d && killall -q devilspie)&
+if [ ! -f "$HOME/.config/autostart/devilspie.desktop" ]; then
+    command -v devilspie >/dev/null 2>&1 && echo "[Desktop Entry]
+    Name=Devilspie
+    Exec=/usr/bin/devilspie
+    Terminal=false
+    Type=Application
+    X-Gnome-Autostart=true" > $HOME/.config/autostart/devilspie.desktop
+    printf "${white}[\u2713] Done!\n\n${nocolor}"
+fi
 
 # Unset variables set by this script
 unset -v file folder dotfile dotfolder
