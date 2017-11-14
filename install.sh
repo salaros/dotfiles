@@ -54,7 +54,14 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install Bash-related files via symlinks
 printf "${purple}Bash-related configs\n\n"
-for file in $(pwd)/{aliases,exports,dircolors,inputrc,bash_completion,bashrc,bash_prompt,bash_tweaks,profile}; do
+for file in $(pwd)/{aliases,exports,dircolors,bash_completion,bashrc,bash_prompt,bash_tweaks,profile}; do
+	ln -sv "$file" "$HOME/.$(basename $file)"
+done;
+printf "${white}[\u2713] Done!\n\n${nocolor}"
+
+# Install screen, input and session-related stuff
+printf "${fawn}Screen, input and session-related stuff\n\n"
+for file in $(pwd)/{inputrc,drirc,xbindkeysrc}; do
 	ln -sv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
