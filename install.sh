@@ -38,13 +38,22 @@ for file in *; do
     fi
 done;
 
-for folder in `find . -maxdepth 1 -type d`
+# Link all folders (except 'config') to $HOME
+for folder in `find ./* -maxdepth 1 -type d -not -name "config"`
 do
     dotfolder="$HOME/.$(basename $folder)"
     if [ -d $dotfolder ] && [ ! -L $dotfolder ]; then
         cp -rfvaup $dotfolder ~/.var/backup/dotfolder && rm -rfv $dotfolder
     fi
+done
 
+# Link all folders from config to ~/.config
+for folder in `find ./config/ -maxdepth 1 -type d`
+do
+    dotfolder="$HOME/.config/$(basename $folder)"
+    if [ -d $dotfolder ] && [ ! -L $dotfolder ]; then
+        cp -rfvaup $dotfolder ~/.var/backup/dotfolder && rm -rfv $dotfolder
+    fi
 done
 
 printf "${white}[\u2713] Done!\n\n${nocolor}"
