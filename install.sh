@@ -110,4 +110,4 @@ fi
 unset -v file folder dotfile dotfolder
 
 # Reloading the bash with new settings
-source ~/.bashrc && source ~/.profile && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
+source ~/.profile && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
