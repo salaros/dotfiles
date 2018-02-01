@@ -60,7 +60,7 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install Bash-related files via symlinks
 printf "${purple}Bash-related configs\n\n"
-for file in $(pwd)/{aliases,exports,dircolors,bash_completion,bashrc,bash_prompt,bash_tweaks,profile}; do
+for file in $(pwd)/{aliases,exports,dircolors,bash_completion,bashrc,bash_prompt,bash_tweaks,profile,hidden}; do
 	ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
