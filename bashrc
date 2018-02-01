@@ -37,9 +37,12 @@ fi
 
 # Starts SSH agent and all available loads identities
 # as a workaround for Bash running on WSL (Windows Subsystem for Linux)
-if grep -q Microsoft /proc/version; then
-    chmod 600 -v ~/.ssh/id_*
-    chmod 600 -v ~/.ssh/*.ppk
-    chmod 755 -v ~/.ssh/
-    eval `ssh-agent` > /dev/null 2>&1 && ssh-add > /dev/null 2>&1;
+if [ -d "~/.ssh" ] && [ $(ps ax | grep [s]sh-agent | wc -l) -le 0 ]; then
+  # Fix file permissions for SSH keys
+  chmod 600 -v ~/.ssh/id_*
+  chmod 600 -v ~/.ssh/*.ppk
+  chmod 755 -v ~/.ssh/
+
+  # Start SSH agent
+  eval `ssh-agent` > /dev/null 2>&1 && ssh-add > /dev/null 2>&1;
 fi
