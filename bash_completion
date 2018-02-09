@@ -1,4 +1,10 @@
 # Include Azure CLI autocompletion
 if [ -f /opt/azure-cli/az.completion ]; then
-  . /opt/azure-cli/az.completion
+  . /opt/azure-cli/az.completion;
+fi
+
+# Add shell auto-completion for composer
+# More info: https://github.com/stecman/composer-bash-completion-plugin
+if [ -f "${COMPOSER_HOME-$HOME/.composer}/vendor/stecman/composer-bash-completion-plugin/hooks/bash-completion" ]; then
+  . "${COMPOSER_HOME-$HOME/.composer}/vendor/stecman/composer-bash-completion-plugin/hooks/bash-completion"
 fi
