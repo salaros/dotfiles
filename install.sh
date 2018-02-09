@@ -107,6 +107,19 @@ do
 done
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
+# Install Gnome wallpaper changer
+printf "${blue}Gnome wallpaper changer\n"
+if [ ! -f "$HOME/.config/autostart/gnome-wallpaper-changer.desktop" ]; then
+    command -v gnome-wallpaper-changer >/dev/null 2>&1 && echo "[Desktop Entry]
+    Name=gnome-wallpaper-changer
+    Exec=$HOME/.bin/gnome-wallpaper-changer --source local
+    Comment=Automatically change wallpaper
+    Hidden=false
+    Type=Application
+    X-GNOME-Autostart-enabled=true" > $HOME/.config/autostart/gnome-wallpaper-changer.desktop
+    printf "${white}[\u2713] Done!\n\n${nocolor}"
+fi
+
 # Install devilspie and other tweaks via symlinks
 printf "${green}Devilspie and other tweaks\n"
 [[ ! -L "$HOME/.devilspie" ]] && ln -sfv $(pwd)/devilspie "$HOME/.devilspie"
