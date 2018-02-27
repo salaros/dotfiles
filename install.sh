@@ -21,6 +21,10 @@ if [ ! -d ~/.var/backup ]; then
 	mkdir -pv ~/.var/backup/dotfiles
 fi
 
+if [ ! -d ~/.local/bin ]; then
+        mkdir -pv ~/.local/bin
+fi
+
 # Backuping existing and ${pink}REAL${red} dotfiles and removing symlinked dotfiles
 printf "${red}Backuping existing and ${pink}REAL${red} dotfiles (and removing symlinked dotfiles)\n\n"
 shopt -u dotglob
