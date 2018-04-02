@@ -35,6 +35,9 @@ fi
 # Set host-specific config
 [[ -f ~/.bashrc.$HOSTNAME ]] && . ~/.bashrc.$HOSTNAME
 
+# WakaTime for terminal
+[[ -f ~/.bash-wakatime/bash-wakatime.sh ]] && . ~/.bash-wakatime/bash-wakatime.sh
+
 # Starts SSH agent and all available loads identities
 # as a workaround for Bash running on WSL (Windows Subsystem for Linux)
 if [ -d "$HOME/.ssh" ] && [ $(ps ax | grep [s]sh-agent | wc -l) -le 5 ]; then
