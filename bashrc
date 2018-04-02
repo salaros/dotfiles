@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# $HOME/.bashrc: executed by bash(1) for non-login shells.
 
 # If not running interactively, don't do anything
 case $- in
@@ -18,32 +18,32 @@ if ! shopt -oq posix; then
 fi
 
 # Exports environment variables
-[[ -f ~/.exports ]] && . ~/.exports
+[[ -f $HOME/.exports ]] && . $HOME/.exports
 
 # Set some bash options and apply some tweaks
-[[ -f ~/.bash_tweaks ]] && . ~/.bash_tweaks
+[[ -f $HOME/.bash_tweaks ]] && . $HOME/.bash_tweaks
 
 # More command completion
-[[ -f ~/.bash_completion ]] && . ~/.bash_completion
+[[ -f $HOME/.bash_completion ]] && . $HOME/.bash_completion
 
 # Alias definitions
-[[ -f ~/.aliases ]] && . ~/.aliases
+[[ -f $HOME/.aliases ]] && . $HOME/.aliases
 
 # Coloring the bash here
-[[ -f ~/.bash_prompt ]] && . ~/.bash_prompt
+[[ -f $HOME/.bash_prompt ]] && . $HOME/.bash_prompt
 
 # Set host-specific config
-[[ -f ~/.bashrc.$HOSTNAME ]] && . ~/.bashrc.$HOSTNAME
+[[ -f $HOME/.bashrc.$HOSTNAME ]] && . $HOME/.bashrc.$HOSTNAME
 
 # WakaTime for terminal
-[[ -f ~/.bash-wakatime/bash-wakatime.sh ]] && . ~/.bash-wakatime/bash-wakatime.sh
+[[ -f $HOME/.bash-wakatime/bash-wakatime.sh ]] && . $HOME/.bash-wakatime/bash-wakatime.sh
 
 # Starts SSH agent and all available loads identities
 # as a workaround for Bash running on WSL (Windows Subsystem for Linux)
 if [ -d "$HOME/.ssh" ] && [ $(ps ax | grep [s]sh-agent | wc -l) -le 5 ]; then
   # Fix file permissions for SSH keys
-  chmod 600 ~/.ssh/id_* > /dev/null 2>&1
-  chmod 755 ~/.ssh/ > /dev/null 2>&1
+  chmod 600 $HOME/.ssh/id_* > /dev/null 2>&1
+  chmod 755 $HOME/.ssh/ > /dev/null 2>&1
 
   # Start SSH agent
   eval `ssh-agent` > /dev/null 2>&1 && ssh-add > /dev/null 2>&1;
