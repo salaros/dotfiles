@@ -1,0 +1,10 @@
+; http://www.foosel.org/linux/devilspie
+(if
+  (and
+    (contains (window_class) "Skype")
+    (contains (window_name) "Skype")
+  )
+  (begin
+    (minimize)
+  )
+)
