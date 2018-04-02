@@ -37,11 +37,10 @@ fi
 
 # Starts SSH agent and all available loads identities
 # as a workaround for Bash running on WSL (Windows Subsystem for Linux)
-if [ -d "$HOME/.ssh" ] && [ $(ps ax | grep [s]sh-agent | wc -l) -le 0 ]; then
+if [ -d "$HOME/.ssh" ] && [ $(ps ax | grep [s]sh-agent | wc -l) -le 5 ]; then
   # Fix file permissions for SSH keys
-  chmod 600 $HOME/.ssh/id_*
-  chmod 600 $HOME/.ssh/*.ppk
-  chmod 755 $HOME/.ssh/
+  chmod 600 ~/.ssh/id_* > /dev/null 2>&1
+  chmod 755 ~/.ssh/ > /dev/null 2>&1
 
   # Start SSH agent
   eval `ssh-agent` > /dev/null 2>&1 && ssh-add > /dev/null 2>&1;
