@@ -33,6 +33,9 @@ fi
 if [ -d "$HOME/.composer/vendor/bin" ] ; then
     PATH="$HOME/.composer/vendor/bin:$PATH"
 fi
+if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+    PATH="$HOME/.config/composer/vendor/bin:$PATH"
+fi
 
 # Prepend NPM's and Yarn's bin folders to PATH if needed
 if [ -d "$HOME/.npm/bin"  ] ; then
