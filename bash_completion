@@ -3,6 +3,9 @@ if [ -f /opt/azure-cli/az.completion ]; then
   . /opt/azure-cli/az.completion;
 fi
 
+# Travis CI CLI
+[ -f $HOME/.travis/travis.sh ] && . $HOME/.travis/travis.sh
+
 # Add shell auto-completion for composer
 # More info: https://github.com/stecman/composer-bash-completion-plugin
 if [ -f "${COMPOSER_HOME-$HOME/.composer}/vendor/stecman/composer-bash-completion-plugin/hooks/bash-completion" ]; then
