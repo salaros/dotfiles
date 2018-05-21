@@ -21,3 +21,6 @@ export NPM_CONFIG_PREFIX=${HOME}/.npm
 
 # Try to change default ~/snap folder location to something more elegant
 export SNAP_USER_DATA=${HOME}/.snap
+
+# Turn off .NET Core tools telemetry (read more here https://aka.ms/dotnet-cli-telemetry)
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
