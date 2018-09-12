@@ -42,6 +42,7 @@ fi
 # as a workaround for Bash running on WSL (Windows Subsystem for Linux)
 if [ -d "$HOME/.ssh" ] && [ $(ps ax | grep [s]sh-agent | wc -l) -le 5 ]; then
   # Fix file permissions for SSH keys
+  chown $USER:$USER -R $HOME/.ssh > /dev/null 2>&1
   chmod 600 $HOME/.ssh/id_* > /dev/null 2>&1
   chmod 755 $HOME/.ssh/ > /dev/null 2>&1
 
