@@ -18,30 +18,34 @@ fi
 
 # Set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.bin" ] ; then
-    PATH="$HOME/.bin:$PATH"
+    export PATH="$HOME/.bin:$PATH"
 fi
 
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [ -d "$HOME/.local/sbin" ] ; then
-    PATH="$HOME/.local/sbin:$PATH"
+    export PATH="$HOME/.local/sbin:$PATH"
 fi
 
 # Add Composer's vendor/bin to PATH
 if [ -d "$HOME/.composer/vendor/bin" ] ; then
-    PATH="$HOME/.composer/vendor/bin:$PATH"
+    export PATH="$HOME/.composer/vendor/bin:$PATH"
 fi
 if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
-    PATH="$HOME/.config/composer/vendor/bin:$PATH"
+    export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
 # Prepend NPM's and Yarn's bin folders to PATH if needed
-if [ -d "$HOME/.npm/bin"  ] ; then
-    PATH="$HOME/.npm/bin:$PATH"
+if [ -d "$HOME/.npm/bin" ] ; then
+    export PATH="$HOME/.npm/bin:$PATH"
 fi
 
-if [ -d "$HOME/.yarn/bin"  ] ; then
-    PATH="$HOME/.yarn/bin:$PATH"
+# Include Yarn paths
+if [ -d "$HOME/.yarn/bin" ] ; then
+    export PATH="$HOME/.yarn/bin:$PATH"
+fi
+if [ -d "$HOME/.config/yarn/global/node_modules/.bin" ] ; then
+    export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
