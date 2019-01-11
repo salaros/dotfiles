@@ -24,3 +24,9 @@ export SNAP_USER_DATA=${HOME}/.snap
 
 # Turn off .NET Core tools telemetry (read more here https://aka.ms/dotnet-cli-telemetry)
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Windows-only var exports
+if grep -q Microsoft /proc/version; then
+   export DOCKER_HOST=tcp://localhost:2375
+   export DISPLAY=:0
+fi
