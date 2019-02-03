@@ -42,22 +42,19 @@ for file in *; do
     fi
 done;
 
-# Link all folders (except 'config') to $HOME
-for folder in `find ./* -maxdepth 1 -type d -not -name "config"`
-do
-    dotfolder="$HOME/.$(basename $folder)"
-    if [ -d $dotfolder ] && [ ! -L $dotfolder ]; then
-        cp -rfvaup $dotfolder ~/.var/backup/dotfolder && rm -rfv $dotfolder
-    fi
-done
 
-# Link all folders from config to ~/.config
-for folder in `find ./config/ -maxdepth 1 -type d`
+# Backup all non-symlinked files in subfolders of ~/.config
+for folder in `find ./config/* -maxdepth 1 -type d`
 do
     dotfolder="$HOME/.config/$(basename $folder)"
-    if [ -d $dotfolder ] && [ ! -L $dotfolder ]; then
-        cp -rfvaup $dotfolder ~/.var/backup/dotfolder && rm -rfv $dotfolder
-    fi
+    mkdir -pv $dotfolder
+    for filename in $folder/*; do
+        dotfile=$dotfolder/$(basename $file)
+        if [ -f $dotfile ] && [ ! -L $dotfile ]; then
+            mkdir -pv ~/.var/backup/.config/$(basename $folder)
+            cp -rfvaup $dotfile ~/.var/backup/.config/$(basename $folder)/$(basename $file) && rm -rfv $dotfile
+        fi
+    done
 done
 
 printf "${white}[\u2713] Done!\n\n${nocolor}"
@@ -107,7 +104,10 @@ printf "${darkcyan}~/.config folder for app configs\n"
 for folder in `find $(pwd)/config/* -maxdepth 1 -type d`
 do
 	dotfolder="$HOME/.config/$(basename $folder)"
-    ln -sfv $folder $dotfolder
+    mkdir -pv $dotfolder
+    for filename in $folder/*; do
+        ln -sfv $filename $dotfolder/
+    done
 done
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
