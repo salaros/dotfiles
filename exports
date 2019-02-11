@@ -30,3 +30,8 @@ if grep -q Microsoft /proc/version; then
    export DOCKER_HOST=tcp://localhost:2375
    export DISPLAY=:0
 fi
+
+# Apply GTK themes to QT5 apps
+# might require 'qt5-style-plugins' installation on Debian/Ubuntu
+export QT_QPA_PLATFORMTHEME=gtk2
+
