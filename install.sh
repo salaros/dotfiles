@@ -112,15 +112,28 @@ done
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install Gnome wallpaper changer
-printf "${blue}Gnome wallpaper changer\n"
-if [ ! -f "$HOME/.config/autostart/gnome-wallpaper-changer.desktop" ]; then
+## printf "${blue}Gnome wallpaper changer\n"
+## if [ ! -f "$HOME/.config/autostart/gnome-wallpaper-changer.desktop" ]; then
+##     command -v gnome-wallpaper-changer >/dev/null 2>&1 && echo "[Desktop Entry]
+##     Name=gnome-wallpaper-changer
+##     Exec=$HOME/.bin/gnome-wallpaper-changer --source local
+##     Comment=Automatically change wallpaper
+##     Hidden=false
+##     Type=Application
+##     X-GNOME-Autostart-enabled=true" > $HOME/.config/autostart/gnome-wallpaper-changer.desktop
+##     printf "${white}[\u2713] Done!\n\n${nocolor}"
+## fi
+
+# Install Gnome wallpaper changer
+printf "${blue}Headphones fix\n"
+if [ ! -f "$HOME/.config/autostart/headphones-fix.desktop" ]; then
     command -v gnome-wallpaper-changer >/dev/null 2>&1 && echo "[Desktop Entry]
-    Name=gnome-wallpaper-changer
-    Exec=$HOME/.bin/gnome-wallpaper-changer --source local
-    Comment=Automatically change wallpaper
+    Name=Headphones fix
+    Exec=$HOME/.bin/headphones-fix
+    Comment=Switch to headphones upon boot
     Hidden=false
     Type=Application
-    X-GNOME-Autostart-enabled=true" > $HOME/.config/autostart/gnome-wallpaper-changer.desktop
+    X-GNOME-Autostart-enabled=true" > $HOME/.config/autostart/headphones-fix.desktop
     printf "${white}[\u2713] Done!\n\n${nocolor}"
 fi
 
