@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")"
 
 nocolor=$'\e[0m'
 bold=$(tput bold)                         # make colors bold/bright
@@ -18,7 +19,7 @@ white="$bold$gray"                        # bright white text
 
 # Create a backup folder for existing configs
 if [ ! -d ~/.var/backup ]; then
-	mkdir -pv ~/.var/backup/dotfiles
+        mkdir -pv ~/.var/backup/dotfiles
 fi
 
 if [ ! -d ~/.local/bin ]; then
@@ -44,6 +45,7 @@ done;
 
 
 # Backup all non-symlinked files in subfolders of ~/.config
+mkdir -pv $HOME/.config/autostart
 for folder in `find ./config/* -maxdepth 1 -type d`
 do
     dotfolder="$HOME/.config/$(basename $folder)"
@@ -62,35 +64,35 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 # Install Bash-related files via symlinks
 printf "${purple}Bash-related configs\n\n"
 for file in $(pwd)/{aliases,exports,dircolors,bash_completion,bashrc,bash_prompt,bash_tweaks,profile,hidden}; do
-	ln -sfv "$file" "$HOME/.$(basename $file)"
+        ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install screen, input and session-related stuff
 printf "${fawn}Screen, input and session-related stuff\n\n"
 for file in $(pwd)/{drirc,inputrc,screenrc,xbindkeysrc,xinputrc,xsession}; do
-	ln -sfv "$file" "$HOME/.$(basename $file)"
+        ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install Git-related files via symlinks
 printf "${blue}Git-related configs\n\n"
 for file in $(pwd)/{gitignore,gitattributes,gitconfig}; do
-	ln -sfv "$file" "$HOME/.$(basename $file)"
+        ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install development and editor-related files via symlinks
 printf "${yellow}Development and editor-related configs\n\n"
 for file in $(pwd)/{editorconfig,npmrc,yarnrc}; do
-	ln -sfv "$file" "$HOME/.$(basename $file)"
+        ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
 # Install wget and cURL-related files via symlinks
 printf "${darkblue}wget and cURL-related configs\n\n"
 for file in $(pwd)/{curlrc,wgetrc}; do
-	ln -sfv "$file" "$HOME/.$(basename $file)"
+        ln -sfv "$file" "$HOME/.$(basename $file)"
 done;
 printf "${white}[\u2713] Done!\n\n${nocolor}"
 
@@ -103,7 +105,7 @@ printf "${white}[\u2713] Done!\n\n${nocolor}"
 printf "${darkcyan}~/.config folder for app configs\n"
 for folder in `find $(pwd)/config/* -maxdepth 1 -type d`
 do
-	dotfolder="$HOME/.config/$(basename $folder)"
+        dotfolder="$HOME/.config/$(basename $folder)"
     mkdir -pv $dotfolder
     for filename in $folder/*; do
         ln -sfv $filename $dotfolder/
@@ -155,4 +157,6 @@ fi
 unset -v file folder dotfile dotfolder
 
 # Reloading the bash with new settings
-source ~/.profile && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}" && exec bash
+source ~/.profile && echo "${yellow}Reloading the ${pink}Bash${yellow} with new settings!${nocolor}"
+# ... unless we are running as a script/command inside an Ansible Playbook
+[ "$(ls -A $HOME/.ansible/tmp)" ] || exec bash
